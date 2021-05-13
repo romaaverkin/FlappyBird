@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class PipeMove : MonoBehaviour
 {
-    public float speed;
+    public float speed; // скорость для движения труб
 
-    // Update is called once per frame
     void Update()
     {
-        transform.Translate(-speed * Time.deltaTime, 0, 0);
+        transform.Translate(-speed * Time.deltaTime, 0, 0); // движение труб
     }
+
+    // Подписывайся на канал ICE CREAM
+    // Нашел неточность - напиши мне на почту или в комменты! Спасибки!
 }

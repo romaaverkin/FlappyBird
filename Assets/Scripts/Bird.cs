@@ -4,21 +4,36 @@ using UnityEngine;
 
 public class Bird : MonoBehaviour
 {
-    public float force;
-    Rigidbody2D BirdRigid;
+    public float force;                                 // переменная для силы прыжка
+    Rigidbody2D BirdRigid;                              // нам нужен Rigidbody, а то птичка не будет прыгать
 
-    // Start is called before the first frame update
+    //public GameObject RestartButton;                    // это для кнопки
+
     void Start()
     {
-        BirdRigid = GetComponent<Rigidbody2D>();
+        Time.timeScale = 1;                             //  скорость равна 1 - т.е. все норм работает
+        BirdRigid = GetComponent<Rigidbody2D>();        //  получаем компонент Rigidbody
     }
 
-    // Update is called once per frame
+
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))                // если жмем на кнопку мыши или экран
         {
-            BirdRigid.velocity = Vector2.up * force;
+            BirdRigid.velocity = Vector2.up * force;    // как раз силу настраиваем
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)  // проверяем столкновение
+    {
+        if (collision.collider.tag == "Enemy")          // если тэг объекта "Enemy"
+        {
+            Destroy(gameObject);                        // то птичка уничтожаеся(
+            Time.timeScale = 0;                         // время останавливается
+            //RestartButton.SetActive(true);              // кнопка рестарта появляется
+        }
+    }
+
+    // Подписывайся на канал ICE CREAM
+    // Нашел неточность - напиши мне на почту или в комменты! Спасибки!
 }
