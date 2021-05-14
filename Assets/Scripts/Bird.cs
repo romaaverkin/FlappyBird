@@ -18,7 +18,7 @@ public class Bird : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))                // если жмем на кнопку мыши или экран
+        if (Input.GetMouseButton(0) || Input.GetMouseButton(1))     // если жмем на кнопку мыши или экран
         {
             BirdRigid.velocity = Vector2.up * force;    // как раз силу настраиваем
         }
